@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     const centerX = window.innerWidth / 2 - card.clientWidth / 2;
                     const centerY = window.innerHeight / 2 - card.clientHeight / 2;
                     if (window.matchMedia('(max-width: 1000px)').matches) {
-                        Keyframe={ transform: `translate(115px, 200px)` }
+                        Keyframe={ transform: `translate(115px, 100px)` }
                     }else if (window.matchMedia('(min-width:1001px)').matches){
                         Keyframe={ transform: `translate(420px, -100px)` }
                     }
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // ランダムな位置を計算（カードがはみ出ないように範囲調整）
         const randomX = Math.random() * (areaWidth - card.clientWidth);
         if (window.matchMedia('(max-width: 1000px)').matches) {
-            randomY = Math.random() * (areaHeight - card.clientHeight+600);
+            randomY = Math.random() * (areaHeight - card.clientHeight+400);
         } else if (window.matchMedia('(min-width:1001px)').matches) {
             randomY = Math.random() * (areaHeight - card.clientHeight-100);
         }

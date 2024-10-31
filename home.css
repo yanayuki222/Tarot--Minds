@@ -21,7 +21,7 @@ body{
 }
 @media screen and (max-width: 1000px) {
     .home_title{
-        margin-top:60%;
+        margin-top:45%;
         margin-left:10%;
         margin-right: 10%;
     }
@@ -136,7 +136,7 @@ body{
 }
 @media screen and (max-width: 1000px) {
     #start{
-        margin-top:130%;
+        margin-top:90%;
         margin-left:25%;
         width: 150px;
         position: relative;
@@ -165,7 +165,7 @@ body{
 }
 @media screen and (max-width: 1000px) {
     #cut{
-        margin-top:155%;
+        margin-top:115%;
         margin-left:25%;
         width:150px;
         height:20px;
@@ -193,7 +193,7 @@ body{
 }
 @media screen and (max-width: 1000px) {
     #look_result{
-        margin-top: 140%;
+        margin-top: 90%;
         margin-left:25%;
         width:150px;
         height:20px;
@@ -263,7 +263,7 @@ body{
 }
 @media screen and (max-width: 1000px) {
     #result_area{
-        top: 200px;
+        top: 100px;
         left: -60px;
         width:80%;
     }
@@ -284,7 +284,7 @@ body{
 }
 @media screen and (max-width: 1000px) {
     #go_result{
-        margin-top: 100%;
+        margin-top: 65%;
         margin-left:25%;
         width:150px;
         height:20px;
