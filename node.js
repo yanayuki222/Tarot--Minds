@@ -30,7 +30,13 @@ const cors = require("cors");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const port = 5000;
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: 'https://tarot-minds.vercel.app', // 許可するオリジンを指定
+    methods: ['GET', 'POST'], // 許可するメソッド
+    allowedHeaders: ['Content-Type'] // 許可するヘッダー
+}));
+
+
 app.use(express.json());
 // api/node.js
 
@@ -46,6 +52,7 @@ app.use(express.json());
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 
 app.post("/api/node", async (req, res) => {
+
     res.setHeader('Access-Control-Allow-Origin', 'https://tarot-minds.vercel.app');
     res.setHeader('Access-Control-Allow-Methods', 'GET,POST');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -66,6 +73,7 @@ app.post("/api/node", async (req, res) => {
 
     } catch (error) {
         // console.error("Error:", error);
+        console.error("Error:", error); 
         res.status(500).json({ error: "エラーが発生しました" });
     }
 });
