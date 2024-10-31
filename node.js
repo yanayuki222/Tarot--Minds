@@ -41,7 +41,7 @@ app.use(express.json());
 
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 
-app.post("/api/call-gemini", async (req, res) => {
+app.post("/api/node.js", async (req, res) => {
   // console.log("Request received:", req.body);
     try {
         const { query } = req.body;
