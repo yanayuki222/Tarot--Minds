@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarot Minds</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="icon" href="icon.jpg">
+</head>
+<body>
+
+
+
+    <div class="all_tarot">
+        <div class="tarot_area" id="TarotArea"> 
+            <img id="tarot_card1" src="tarotcard.jpg" class="tarot_card">
+            <img id="tarot_card2" src="tarotcard.jpg" class="tarot_card">
+            <img id="tarot_card3" src="tarotcard.jpg" class="tarot_card">
+            <img id="tarot_card4" src="tarotcard.jpg" class="tarot_card">
+            <img id="tarot_card5" src="tarotcard.jpg" class="tarot_card">
+            <img id="tarot_card6" src="tarotcard.jpg" class="tarot_card">
+            <img id="tarot_card7" src="tarotcard.jpg" class="tarot_card">
+            <img id="tarot_card8" src="tarotcard.jpg" class="tarot_card">
+            <img id="tarot_card9" src="tarotcard.jpg" class="tarot_card">
+            <img id="tarot_card10" src="tarotcard.jpg" class="tarot_card">
+            <img id="tarot_card11" src="tarotcard.jpg" class="tarot_card">
+            <img id="tarot_card12" src="tarotcard.jpg" class="tarot_card">
+            <img id="tarot_card13" src="tarotcard.jpg" class="tarot_card">
+            <img id="tarot_card14" src="tarotcard.jpg" class="tarot_card">
+            <img id="tarot_card15" src="tarotcard.jpg" class="tarot_card">
+            <img id="tarot_card16" src="tarotcard.jpg" class="tarot_card">
+            <img id="tarot_card17" src="tarotcard.jpg" class="tarot_card">
+            <img id="tarot_card18" src="tarotcard.jpg" class="tarot_card">
+            <img id="tarot_card19" src="tarotcard.jpg" class="tarot_card">
+            <img id="tarot_card20" src="tarotcard.jpg" class="tarot_card">
+            <img id="tarot_card21" src="tarotcard.jpg" class="tarot_card">
+            <img id="tarot_card22" src="tarotcard.jpg" class="tarot_card">
+        </div>
+
+        
+        <div id="result_area">
+        </div>
+        <div id="loading"><h2>占い中...</h2></div>
+    </div>
+    <div class="btn">
+        <div id="start">シャッフルする</div>
+        <div id="cut">シャッフル終了</div>
+        <div id="look_result">カードを見る</div>
+        <!-- <a href="result.html"><div id="go_result">結果を見る</div></a> -->
+        <div id="go_result">結果を見る</div>
+    </div>
+    <div class="clear_area">
+        <img class="clear_tarot" src="death.jpg" alt="13 : 死神">
+        <img class="clear_tarot" src="justice.jpg" alt="11 : 正義">
+        <img class="clear_tarot" src="strength.jpg" alt="8 : 力">
+        <img class="clear_tarot" src="temperance.jpg" alt="14 : 節制">
+        <img class="clear_tarot" src="the chariot.jpg" alt="7 : 戦車">
+        <img class="clear_tarot" src="the devil.jpg" alt="15 : 悪魔">
+        <img class="clear_tarot" src="the emperor.jpg" alt="4 : 皇帝">
+        <img class="clear_tarot" src="the empress.jpg" alt="3 : 女帝">
+        <img class="clear_tarot" src="the fool.jpg" alt="0 : 愚者">
+        <img class="clear_tarot" src="the hanged man.jpg" alt="12 : 吊られた男">
+        <img class="clear_tarot" src="the hermit.jpg" alt="9 : 隠者">
+        <img class="clear_tarot" src="the hierophant.jpg" alt="5 : 法王">
+        <img class="clear_tarot" src="the high priestess.jpg" alt="2: 女教皇">
+        <img class="clear_tarot" src="the last judgement.jpg" alt="20 : 最後の審判">
+        <img class="clear_tarot" src="the magician.jpg" alt="1: 魔術師">
+        <img class="clear_tarot" src="the moon.jpg" alt="18 : 月">
+        <img class="clear_tarot" src="the star.jpg" alt="17 : 星">
+        <img class="clear_tarot" src="the sun.jpg" alt="19 : 太陽">
+        <img class="clear_tarot" src="the tower.jpg" alt="16 : 塔">
+        <img class="clear_tarot" src="the world.jpg" alt="21 : 世界">
+        <img class="clear_tarot" src="wheel of fortune.jpg" alt="10 : 運命の輪">
+        <img class="clear_tarot" src="the lovers.jpg" alt="6 : 恋人">
+    </div>
+
+    <a href="index.html" class="return"><h2>< 戻る</h2></a>
+    
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let Start = document.getElementById("start")
+            let Example = document.getElementById("example")
+            let Cut = document.getElementById("cut")
+            let LookResult = document.getElementById("look_result")
+            let GoResult = document.getElementById("go_result")
+            let TarotCard = document.querySelectorAll('.tarot_card');
+            let ResultArea = document.getElementById("result_area")
+            let Loading = document.getElementById("loading")
+            let Result;
+
+            if(Cut){
+                Cut.addEventListener("click", function () {
+                    Start.style.display = "none";
+                    Cut.style.display = "none";
+                    LookResult.style.display = "inline-block";
+
+                });
+            };
+
+            if(LookResult){
+                LookResult.addEventListener("click", function () {
+                    if (LookResult.style.display === 'block') {
+                            LookResult.style.display = 'none';
+                        }
+                    Loading.style.display = 'block';
+
+                    let ClearTarot = document.querySelectorAll('.clear_tarot');
+
+                    let choice = Math.floor(Math.random() * ClearTarot.length)
+                    Result = ClearTarot[choice]
+                    localStorage.setItem('selected_card_src', Result.src)
+                    localStorage.setItem('selected_card_alt', Result.alt)
+                    let ResultArea = document.getElementById("result_area");
+                    ResultArea.innerHTML += `<img src="${Result.src}" width="25%">`
+                    Loading.style.display === 'none'
+                    setTimeout(function() {
+                        GoResult.style.display = "block";
+                    }, 7000);
+
+                    
+                    // let ResultName = document.getElementById("result_name");
+                    // let ResultImg = document.getElementById("result_img");
+                    // let SelectedSrc = localStorage.getItem('selected_card_src')
+                    // let SelectedAlt = localStorage.getItem('selected_card_alt')
+
+                });
+
+                GoResult.addEventListener("click", function () {
+                    window.location.href = "result.html";
+                });
+            }
+            
+        });
+    </script>
+    <script type="module">
+        document.addEventListener("DOMContentLoaded", function () {
+            let LookResult = document.getElementById("look_result")
+            let GoResult = document.getElementById("go_result")
+            document.getElementById("look_result").addEventListener("click", async () => {
+                let Problem=localStorage.getItem('problem')
+                let ResultAlt=localStorage.getItem('selected_card_alt')
+
+                try {
+                    const response = await fetch("http://localhost:5000/api/call-gemini", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ query: `悩み：${Problem}タロット：${ResultAlt}、この悩みは現在どのような状態で、未来はどうなると示していますか。また、アドバイスやその他注意した方が良い事があったら書いてください。ブロックごとにプログラム上で改行して見やすくしてください。「*」をあまり使わず見やすくしてください。最初の「## 〇〇に関する悩み：タロット：〇: 〇〇」という説明はいらないです。` })
+                    });
+                    
+                    let data = await response.json();
+                    // console.log(data.response); 
+                    localStorage.setItem("geminiResponse",data.response)
+                    console.log(localStorage.getItem("geminiResponse"))
+                    GoResult.addEventListener("click", function () {
+                            window.location.href = "result.html";
+                    });
+                    // if(data.response){
+                    //     localStorage.setItem("geminiResponse", data.response);
+                    // }
+                    // 別ページに移動
+
+                    // let geminiResponse = localStorage.getItem('geminiResponse');
+                    // document.getElementById('ai_answer').textContent = geminiResponse || "No response found.";
+                } catch (error) {
+                    console.error("エラー:", error);
+                    alert("エラーが発生しました。もう一度お試しください。");
+                }
+            });
+        });
+    </script>
+    <script src="home.js"></script>
+    <!-- <script src="node.mjs" type="module"></script> -->
+</body>
+</html>

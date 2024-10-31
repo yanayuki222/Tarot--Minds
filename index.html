@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarot Minds</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="icon" href="icon.jpg">
+</head>
+<body>
+    <div class="home">
+        <div class="home_title">
+            <h1>Tarot Minds</h1>
+            <h2>あなたの悩みに合わせてAIが道筋を導きます</h2>
+        </div>
+        <div class="home_text">
+            <div class="help">
+                <input type="textarea" id="problem" placeholder="あなたの悩みを入力してください">
+                <img src="help_button.png" id="help_button" class="help_button">
+            </div>
+                <div id="example"><p>例：今日の運勢<br>彼氏・彼女が欲しい<br>好きなあの人に振り向いてほしい<br>仕事で失敗をしてしまう<br>怖い夢を見た</p></div>
+                <!-- <a href="tarot.html" ><div id="next1">占う</div></a> -->
+                <div id="next1">占う</div>
+                <!-- <button id="next1" type="submit">占う</button> -->
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let Next1 = document.getElementById("next1")
+            Next1.addEventListener("click", function () {
+
+                let Problem = document.getElementById("problem").value
+                localStorage.setItem('problem', Problem)
+                if(localStorage.getItem('problem')){
+                    window.location.href = "tarot.html";
+                }
+            });
+        });
+    </script>
+    <!-- <script type="module">
+        main.js
+        import { callAI } from './server.mjs';
+
+        document.getElementById('next1').addEventListener('click', async () => {
+            // event.preventDefault();
+
+            let userInput = document.getElementById('problem').value;
+            
+            try {
+                let response = await callAI(userInput);
+                // ローカルストレージに保存して別のページで利用
+                localStorage.setItem('geminiResponse', response);
+                // window.location.href = "tarot.html";
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        });
+
+
+ 
+        document.getElementById("next1").addEventListener("click", async () => {
+            // const timestamp = new Date().getTime();
+            const userInput = document.getElementById("problem").value;
+            try {
+                const response = await fetch(`http://localhost:5000/api/call-gemini`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ query: userInput })
+                });
+                
+                const data = await response.json();
+                localStorage.setItem("geminiResponse", data.response);
+
+
+            } catch (error) {
+                console.error("エラー:", error);
+                alert("エラーが発生しました。もう一度お試しください。");
+            }
+        });
+    </script> -->
+    
+    <script src="home.js"></script>
+</body>
+</html>
