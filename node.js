@@ -30,19 +30,11 @@ const cors = require("cors");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const port = 5000;
 const app = express();
-// app.use(cors());
+app.use(cors());
 app.use(express.json());
 // api/node.js
 
-export default function handler(req, res) {
-    // CORSヘッダーを追加
-    res.setHeader('Access-Control-Allow-Origin', 'https://tarot-minds.vercel.app');
-    res.setHeader('Access-Control-Allow-Methods', 'GET,POST');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    
-    // 他のAPIの処理
-    res.status(200).json({ message: "CORS headers set correctly" });
-}
+
 
 
 // app.use((req, res, next) => {
@@ -54,6 +46,9 @@ export default function handler(req, res) {
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 
 app.post("/api/node", async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://tarot-minds.vercel.app');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,POST');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   // console.log("Request received:", req.body);
     try {
         const { query } = req.body;
